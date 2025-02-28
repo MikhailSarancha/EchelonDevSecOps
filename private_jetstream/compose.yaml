@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  nats:
+    image: nats:latest
+    container_name: private_jetstream
+    ports:
+      - "4222:4222"
+    volumes:
+      - ./nats.conf:/etc/nats/nats-server.conf
+      - ./certs:/etc/nats/certs
+    command: ["--config", "/etc/nats/nats-server.conf"]
